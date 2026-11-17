@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MC Xuân Trang | Vietnamese – Japanese – English Wedding MC</title>
+  <meta name="description" content="MC Xuân Trang – MC cưới & sự kiện song ngữ Việt – Nhật – Anh, dẫn dắt bằng cảm xúc và sự tinh tế.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Be+Vietnam+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #B8893E;
+      --gold-soft: #D9B878;
+      --cream: #FBF7F0;
+      --ink: #2B2420;
+      --muted: #7A6E66;
+      --white: #FFFFFF;
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(60, 40, 20, .12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Be Vietnam Pro", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 600; line-height: 1.2; }
+    section { padding: 96px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: .25em; text-transform: uppercase;
+      font-size: .75rem; color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    .lead { color: var(--muted); max-width: 640px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 999px;
+      font-weight: 500; transition: transform .25s, box-shadow .25s, background .25s;
+      border: 1.5px solid var(--gold);
+    }
+    .btn-primary { background: var(--gold); color: var(--white); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .btn-ghost { color: var(--gold); background: transparent; }
+    .btn-ghost:hover { background: var(--gold); color: var(--white); transform: translateY(-3px); }
+
+    /* ---------- Header ---------- */
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      padding: 18px 24px; transition: background .4s, box-shadow .4s;
+    }
+    header.scrolled { background: rgba(251, 247, 240, .92); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,.05); }
+    .nav { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: "Playfair Display", serif; font-size: 1.3rem; color: var(--white); transition: color .4s; }
+    header.scrolled .logo { color: var(--ink); }
+    .nav-links { display: flex; gap: 26px; }
+    .nav-links a { color: var(--white); font-size: .92rem; transition: color .3s; }
+    header.scrolled .nav-links a { color: var(--ink); }
+    .nav-links a:hover { color: var(--gold); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: var(--white); cursor: pointer; }
+    header.scrolled .menu-toggle { color: var(--ink); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: var(--white); overflow: hidden;
+      padding: 0 24px;
+    }
+    .hero-bg {
+      position: absolute; inset: -5%;
+      background: url("images/hero-beach.jpg") center/cover no-repeat;
+      animation: kenburns 18s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(30,20,12,.35), rgba(30,20,12,.65));
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero h1 { font-size: clamp(2.8rem, 8vw, 5.5rem); font-style: italic; margin-bottom: 8px; }
+    .hero .tagline { font-size: clamp(1rem, 2vw, 1.25rem); opacity: .95; margin-bottom: 14px; }
+    .hero .langs {
+      letter-spacing: .3em; font-size: .85rem; color: var(--gold-soft); margin-bottom: 36px;
+    }
+    .hero .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .scroll-hint {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 56px; background: rgba(255,255,255,.6);
+      animation: drip 2s ease-in-out infinite;
+    }
+
+    /* ---------- Split-text reveal ---------- */
+    .word { display: inline-block; opacity: 0; transform: translateY(20px); animation: wordIn .8s forwards; }
+    @keyframes wordIn { to { opacity: 1; transform: translateY(0); } }
+
+    /* ---------- About ---------- */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .about-photo { position: relative; }
+    .about-photo img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+    .about-photo::before {
+      content: ""; position: absolute; inset: 18px -18px -18px 18px;
+      border: 2px solid var(--gold-soft); border-radius: var(--radius); z-index: -1;
+    }
+    .about-text p { margin-bottom: 16px; color: var(--muted); }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .skill {
+      padding: 8px 16px; border-radius: 999px; background: var(--white);
+      border: 1px solid #EADFCC; font-size: .88rem;
+    }
+
+    /* ---------- Stats ---------- */
+    .stats { background: var(--ink); color: var(--white); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+    .stat-num { font-family: "Playfair Display", serif; font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--gold-soft); }
+    .stat-label { color: #CFC6BC; font-size: .95rem; }
+
+    /* ---------- Galleries ---------- */
+    .event-block { margin-bottom: 72px; }
+    .event-head { text-align: center; margin-bottom: 28px; }
+    .event-head h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
+    .event-head p { color: var(--muted); font-style: italic; max-width: 680px; margin: 0 auto; }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .gallery figure {
+      overflow: hidden; border-radius: 14px; aspect-ratio: 4/5;
+      opacity: 0; transform: translateY(30px) scale(.98);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .gallery figure.visible { opacity: 1; transform: none; }
+    .gallery figure:nth-child(2) { transition-delay: .1s; }
+    .gallery figure:nth-child(3) { transition-delay: .2s; }
+    .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease; cursor: zoom-in; }
+    .gallery figure:hover img { transform: scale(1.07); }
+    .gallery figure:nth-child(1) { grid-row: span 1; }
+    .gallery-wide { grid-template-columns: repeat(2, 1fr); }
+    .gallery-wide figure { aspect-ratio: 3/2; }
+
+    /* ---------- Services ---------- */
+    .services { background: var(--white); }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .service-card {
+      padding: 36px 28px; border-radius: var(--radius); background: var(--cream);
+      border: 1px solid #EFE4D2; transition: transform .4s, box-shadow .4s;
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .service-card .icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .service-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .service-card p { color: var(--muted); font-size: .95rem; }
+
+    /* ---------- Video ---------- */
+    .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 40px; }
+    .video-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .video-frame { position: relative; aspect-ratio: 16/9; background: #1f1813; }
+    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-placeholder {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px; color: var(--gold-soft); text-align: center; padding: 20px;
+    }
+    .video-placeholder .play {
+      width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--gold-soft);
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+      animation: pulse 2.2s infinite;
+    }
+    .video-card .caption { padding: 18px 22px; }
+    .video-card .caption h3 { font-size: 1.1rem; }
+    .video-card .caption p { color: var(--muted); font-size: .9rem; }
+    .folder-link { text-align: center; margin-top: 36px; }
+
+    /* ---------- Reviews ---------- */
+    .reviews { background: linear-gradient(180deg, var(--cream), #F4EAD9); }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .review-card {
+      background: var(--white); padding: 30px; border-radius: var(--radius);
+      box-shadow: var(--shadow); position: relative;
+    }
+    .review-card::before { content: "“"; position: absolute; top: 4px; left: 20px; font-family: "Playfair Display", serif; font-size: 4.5rem; color: var(--gold-soft); line-height: 1; }
+    .review-card p { font-style: italic; color: var(--ink); padding-top: 22px; margin-bottom: 14px; }
+    .review-card span { font-size: .85rem; color: var(--gold); font-weight: 500; }
+
+    /* ---------- Contact ---------- */
+    .contact { text-align: center; background: var(--ink); color: var(--white); }
+    .contact .lead { color: #CFC6BC; margin: 0 auto 36px; }
+    .contact-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .contact .btn-ghost { color: var(--gold-soft); border-color: var(--gold-soft); }
+    .contact .btn-ghost:hover { background: var(--gold-soft); color: var(--ink); }
+    .contact .btn-primary { background: var(--gold-soft); color: var(--ink); border-color: var(--gold-soft); }
+    .contact .btn-primary:hover { background: var(--white); border-color: var(--white); }
+    .contact-note { color: #9E958C; font-size: .85rem; margin-top: 28px; }
+
+    footer { padding: 28px 24px; text-align: center; font-size: .85rem; color: var(--muted); background: var(--cream); }
+
+    /* ---------- Floating Viber ---------- */
+    .viber-float {
+      position: fixed; right: 22px; bottom: 22px; z-index: 60;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #7360F2; color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 26px rgba(115,96,242,.45);
+      animation: pulse 2.6s infinite;
+      font-weight: 600; font-size: .75rem; text-align: center; line-height: 1.1;
+    }
+    .viber-float:hover { transform: scale(1.08); }
+
+    /* ---------- Lightbox ---------- */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(15,10,6,.92);
+      display: none; align-items: center; justify-content: center; z-index: 100; padding: 24px;
+    }
+    .lightbox.open { display: flex; animation: fadeIn .3s; }
+    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 12px; }
+    .lightbox button {
+      position: absolute; top: 18px; right: 22px; background: none; border: none;
+      color: var(--white); font-size: 2rem; cursor: pointer;
+    }
+
+    /* ---------- Reveal on scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ---------- Keyframes ---------- */
+    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.12) translate(-1%, -1%); } }
+    @keyframes drip { 0%,100% { transform: translateX(-50%) scaleY(1); opacity: .4; } 50% { transform: translateX(-50%) scaleY(1.2); opacity: 1; } }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(217,184,120,.5); } 70% { box-shadow: 0 0 0 16px rgba(217,184,120,0); } 100% { box-shadow: 0 0 0 0 rgba(217,184,120,0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .service-grid, .review-grid { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      section { padding: 72px 18px; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 20px; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: var(--ink) !important; }
+      .menu-toggle { display: block; }
+      .service-grid, .review-grid, .video-grid, .gallery, .gallery-wide { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .hero .btn-row { flex-direction: column; align-items: stretch; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .word, .reveal, .gallery figure { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="top">
+  <nav class="nav">
+    <a href="#top" class="logo">Xuân Trang</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">Giới thiệu</a>
+      <a href="#galleries">Khoảnh khắc</a>
+      <a href="#services">Dịch vụ</a>
+      <a href="#videos">Video dẫn</a>
+      <a href="#reviews">Cảm nhận</a>
+      <a href="#contact">Liên hệ</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">☰</button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow" style="color:var(--gold-soft)">Wedding & Event MC</p>
+    <h1 id="heroTitle">MC Xuân Trang</h1>
+    <p class="tagline">Người kể chuyện tình yêu của bạn</p>
+    <p class="langs">VIETNAMESE · JAPANESE · ENGLISH</p>
+    <div class="btn-row">
+      <a href="#videos" class="btn btn-primary">▶ Xem video dẫn</a>
+      <a href="#contact" class="btn btn-ghost" style="color:var(--white);border-color:var(--white)">Đặt lịch tư vấn</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"></div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="images/portrait-trang.jpg" alt="MC Xuân Trang trên lễ đường ngoài trời">
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Về Xuân Trang</span>
+      <h2 class="section-title">Dẫn bằng cảm xúc,<br>kể bằng sự tinh tế</h2>
+      <p>Xuân Trang luôn muốn trở thành người đồng hành cùng các cặp đôi trong khoảnh khắc hạnh phúc nhất đời.</p>
+      <p>Với phong cách dẫn cảm xúc, linh hoạt và hiểu văn hóa Nhật – Việt, hơn 6 năm gắn bó và hơn 400 lễ cưới – sự kiện, Trang rất vui khi được lắng nghe, thấu cảm và kể lại câu chuyện tình yêu theo cách riêng: tự nhiên, gần gũi nhưng vẫn đủ sâu đủ chạm.</p>
+      <p>Với Trang, MC cưới không chỉ là người dẫn dắt buổi lễ, mà là người kể chuyện, người kết nối cảm xúc, để những người thân yêu đều tận hưởng buổi lễ cưới.</p>
+      <div class="skills">
+        <span class="skill">🇻🇳 Tiếng Việt</span>
+        <span class="skill">🇯🇵 日本語</span>
+        <span class="skill">🇬🇧 English</span>
+        <span class="skill">Lễ cưới · Sự kiện</span>
+        <span class="skill">Gameshow & Kết nối</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="reveal">
+      <div class="stat-num" data-count="6">0</div>
+      <div class="stat-label">Năm gắn bó</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num" data-count="400">0</div>
+      <div class="stat-label">Lễ cưới & sự kiện</div>
+    </div>
+    <div class="reveal">
+      <div class="stat-num" data-count="3">0</div>
+      <div class="stat-label">Ngôn ngữ dẫn</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERIES ============ -->
+<section id="galleries">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <span class="eyebrow">Khoảnh khắc</span>
+      <h2 class="section-title">Những lễ cưới đã đi qua</h2>
+      <p class="lead" style="margin:0 auto">Mỗi bộ ảnh là một câu chuyện riêng, một phong cách riêng.</p>
+    </div>
+
+    <div class="event-block" style="margin-top:56px">
+      <div class="event-head reveal">
+        <h3>Intimate Wedding HCM · Simon & Chika</h3>
+        <p>Một lễ cưới tinh tế, nơi ba nền văn hoá Anh – Nhật – Trung hòa quyện nhẹ nhàng trong từng khoảnh khắc.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/simon-chika-1.png" alt="Simon & Chika - Intimate Wedding HCM" loading="lazy"></figure>
+        <figure><img src="images/simon-chika-2.png" alt="Khoảnh khắc Simon & Chika" loading="lazy"></figure>
+        <figure><img src="images/simon-chika-3.png" alt="MC Xuân Trang trong lễ cưới Simon & Chika" loading="lazy"></figure>
+        <figure><img src="images/simon-chika-4.png" alt="Simon & Chika song ngữ" loading="lazy"></figure>
+        <figure><img src="images/simon-chika-5.png" alt="Simon & Chika lời thề" loading="lazy"></figure>
+        <figure><img src="images/simon-chika-6.png" alt="Simon & Chika trên sân khấu" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Tiệc cưới thân mật · Yuta & Thy</h3>
+        <p>Bí mật tạo thử thách đặc biệt cho chú rể, kết thúc là chú rể dùng giọng hát để rước cô dâu. Một bữa tiệc đủ “ấm và yêu”.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/yuta-thy-1.png" alt="Yuta & Thy - tiệc thân mật" loading="lazy"></figure>
+        <figure><img src="images/yuta-thy-2.png" alt="Yuta & Thy hát rước dâu" loading="lazy"></figure>
+        <figure><img src="images/yuta-thy-3.png" alt="Yuta & Thy tầng thượng" loading="lazy"></figure>
+        <figure><img src="images/yuta-thy-4.png" alt="MC dẫn tiệc Yuta & Thy" loading="lazy"></figure>
+        <figure><img src="images/yuta-thy-5.png" alt="Yuta & Thy cùng khách mời" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Wedding Event Song ngữ Nhật – Việt · Duy & Natsuki</h3>
+        <p>Intimate Wedding HCM với không khí ấm áp, trang trọng và rất nhiều nụ cười.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/duy-natsuki-1.png" alt="Duy & Natsuki" loading="lazy"></figure>
+        <figure><img src="images/duy-natsuki-2.png" alt="Duy & Natsuki dẫn chương trình" loading="lazy"></figure>
+        <figure><img src="images/duy-natsuki-3.png" alt="Duy & Natsuki cùng gia đình" loading="lazy"></figure>
+        <figure><img src="images/duy-natsuki-4.png" alt="Duy & Natsuki rót rượu" loading="lazy"></figure>
+        <figure><img src="images/duy-natsuki-5.png" alt="Duy & Natsuki và khách" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Lễ Gia Tiên + Party · Taishi x Thiện Huỳnh</h3>
+        <p>Phần lễ trang trọng, phần party rộn ràng – trọn vẹn hai nền văn hoá.</p>
+      </div>
+      <div class="gallery gallery-wide">
+        <figure><img src="images/taishi-thien-huynh.jpg" alt="Taishi x Thiện Huỳnh" loading="lazy"></figure>
+        <figure><img src="images/shogo-hoa.jpg" alt="Shogo x Hoa - tiệc thân mật" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Ballroom Wedding · Futa x Akari · Đà Nẵng</h3>
+        <p>Không gian vỏn vẹn 25 khách, tuy nhiên rất ấm áp – cùng nhau chơi game, trọn vẹn buổi tiệc thân mật.</p>
+      </div>
+      <div class="gallery gallery-wide">
+        <figure><img src="images/futa-akari.png" alt="Futa x Akari ballroom Đà Nẵng" loading="lazy"></figure>
+        <figure><img src="images/thu-yusuke-1.jpg" alt="Thu & Yusuke lễ cưới" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Lễ Gia Tiên & Tiệc cưới · Koto & Mỹ Ngọc · Long An</h3>
+        <p>Tiệc diễn ra tại tư gia nhà gái, phần lễ rất trang trọng, phần game chơi hết mình.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/koto-my-ngoc-1.jpg" alt="Koto & Mỹ Ngọc lễ gia tiên" loading="lazy"></figure>
+        <figure><img src="images/koto-my-ngoc-2.jpg" alt="Koto & Mỹ Ngọc dâng trà" loading="lazy"></figure>
+        <figure><img src="images/koto-my-ngoc-3.jpg" alt="Koto & Mỹ Ngọc trao quà" loading="lazy"></figure>
+        <figure><img src="images/koto-my-ngoc-4.jpg" alt="Koto & Mỹ Ngọc game" loading="lazy"></figure>
+        <figure><img src="images/koto-my-ngoc-5.jpg" alt="Koto & Mỹ Ngọc cùng khách" loading="lazy"></figure>
+        <figure><img src="images/koto-my-ngoc-6.jpg" alt="Koto & Mỹ Ngọc chụp ảnh" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>Lễ Gia Tiên & Tiệc cưới · Thu & Yusuke · HCM</h3>
+        <p>Giữa Sài Gòn nhộn nhịp, chỉ 6 bàn thân thương – đủ để mọi nụ cười, lời chúc và niềm hạnh phúc được lan tỏa trọn vẹn.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="images/thu-yusuke-1.jpg" alt="Thu & Yusuke" loading="lazy"></figure>
+        <figure><img src="images/thu-yusuke-2.jpg" alt="Thu & Yusuke lễ gia tiên" loading="lazy"></figure>
+        <figure><img src="images/thu-yusuke-3.jpg" alt="Thu & Yusuke chụp cùng MC" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="services">
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <span class="eyebrow">Dịch vụ</span>
+      <h2 class="section-title">Một lễ cưới, nhiều phong cách</h2>
+      <p class="lead" style="margin:0 auto">Mỗi cặp đôi là một câu chuyện riêng. Trang tùy biến kịch bản theo đúng mong muốn của bạn.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card reveal">
+        <div class="icon">🌅</div>
+        <h3>Tiệc cưới Du lịch & Vows</h3>
+        <p>Lễ thề nguyện bên biển, đồi thông, sân vườn – không gian thân mật và đầy cảm xúc.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="icon">🥂</div>
+        <h3>Tiệc cưới sang trọng</h3>
+        <p>Dẫn nghi thức, kể chuyện cặp đôi, gameshow kết nối cùng khách mời tại khách sạn, nhà hàng.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="icon">🏮</div>
+        <h3>Lễ Gia Tiên truyền thống</h3>
+        <p>Kết nối hai gia đình, điều phối đúng trình tự, đúng phong tục và giờ hoàng đạo.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="icon">🌏</div>
+        <h3>MC Song ngữ Việt – Nhật – Anh</h3>
+        <p>Dẫn song ngữ tự nhiên, giúp khách trong và ngoài nước đều thấu hiểu trọn vẹn văn hoá hôn lễ.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="icon">🎉</div>
+        <h3>Gameshow & After Party</h3>
+        <p>Minigame văn minh, duyên dáng – biến khán phòng thành lễ hội đầy nụ cười.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="icon">✍️</div>
+        <h3>Kịch bản cá nhân hóa</h3>
+        <p>Lắng nghe câu chuyện, chắt lọc chất liệu và viết lời dẫn chạm đến cảm xúc của gia đình và bạn bè.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEOS ============ -->
+<section id="videos">
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <span class="eyebrow">Video dẫn</span>
+      <h2 class="section-title">Nghe Trang dẫn trực tiếp</h2>
+      <p class="lead" style="margin:0 auto">Những đoạn video dẫn thực tế để bạn cảm nhận giọng dẫn và phong cách.</p>
+    </div>
+
+    <!-- Các video được điền trong mảng VIDEOS ở cuối file -->
+    <div class="video-grid" id="videoGrid"></div>
+
+    <div class="folder-link reveal">
+      <a href="https://drive.google.com/drive/folders/1qojTgZIcQEnXpcQoPOip3X1bQW_JfBJQ?usp=drive_link" target="_blank" rel="noopener" class="btn btn-ghost">📁 Xem toàn bộ thư mục video</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews" class="reviews">
+  <div class="container" style="text-align:center">
+    <div class="reveal">
+      <span class="eyebrow">Cảm nhận</span>
+      <h2 class="section-title">Lời tri ân từ cặp đôi</h2>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <p>Cô thấy Trang dẫn rất tốt, từ đầu lúc làm việc với em tới giờ mọi thứ em làm rất chỉn chu. Cô rất thích giọng dẫn của em, truyền cảm, sâu sắc.</p>
+        <span>— Khách hàng, Thiện & Taishi</span>
+      </div>
+      <div class="review-card reveal">
+        <p>Feedback của mọi người là quá tuyệt vời bạn Trang ạ. May quá nhờ bạn Trang chạy trước chương trình để biết cách đi lại.</p>
+        <span>— Khách hàng, Duy & Natsuki</span>
+      </div>
+      <div class="review-card reveal">
+        <p>Vừa chuẩn giờ mong muốn nên rất tuyệt vời ạ. May là nay có em.</p>
+        <span>— Gia đình cô dâu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container reveal">
+    <span class="eyebrow" style="color:var(--gold-soft)">Liên hệ</span>
+    <h2 class="section-title">Lễ đường đã sẵn sàng?</h2>
+    <p class="lead">Hãy kể cho Trang nghe câu chuyện của hai bạn. Trang luôn sẵn lòng lắng nghe và đồng hành.</p>
+    <div class="contact-row">
+      <a href="viber://chat?number=%2B84XXXXXXXXX" class="btn btn-primary">💬 Nhắn qua Viber</a>
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="btn btn-ghost">Fanpage</a>
+      <a href="tel:+84XXXXXXXXX" class="btn btn-ghost">📞 Gọi điện</a>
+    </div>
+    <p class="contact-note">Thay các số XXXXXXXXX bằng số thật của bạn (xem README.md).</p>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> MC Xuân Trang · Vietnamese – Japanese – English Wedding MC
+</footer>
+
+<!-- Nút Viber nổi -->
+<a href="viber://chat?number=%2B84XXXXXXXXX" class="viber-float" aria-label="Nhắn Viber cho MC Xuân Trang">Viber</a>
+
+<!-- Lightbox xem ảnh -->
+<div class="lightbox" id="lightbox">
+  <button id="lbClose" aria-label="Đóng">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+/* =====================================================
+   1. CẤU HÌNH VIDEO
+   Điền file ID của từng video trên Google Drive vào "id".
+   Ví dụ link: https://drive.google.com/file/d/ABC123xyz/view
+   → ID là: ABC123xyz
+   Để trống "id" thì ô sẽ hiện thông báo "đang cập nhật".
+   ===================================================== */
+const VIDEOS = [
+  { title: "Video dẫn #1 – Lễ cưới song ngữ", desc: "Phong cách dẫn Việt – Nhật – Anh", id: "" },
+  { title: "Video dẫn #2 – Tiệc cưới sang trọng", desc: "Dẫn nghi thức & gameshow", id: "" },
+  { title: "Video dẫn #3 – Lễ Gia Tiên", desc: "Trang nghiêm, ấm áp", id: "" },
+  { title: "Video dẫn #4 – Vows & After Party", desc: "Không khí tiệc tối", id: "" }
+];
+
+/* =====================================================
+   2. CẤU HÌNH VIBER
+   Thay +84XXXXXXXXX bằng số Viber thật (dạng +84...)
+   trong 3 chỗ: nút nổi, nút liên hệ, và mục liên hệ.
+   ===================================================== */
+
+/* ---------- Render video ---------- */
+const grid = document.getElementById("videoGrid");
+VIDEOS.forEach(v => {
+  const card = document.createElement("div");
+  card.className = "video-card reveal";
+  const frame = document.createElement("div");
+  frame.className = "video-frame";
+  if (v.id) {
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://drive.google.com/file/d/${v.id}/preview`;
+    iframe.allow = "autoplay; fullscreen";
+    iframe.loading = "lazy";
+    iframe.title = v.title;
+    frame.appendChild(iframe);
+  } else {
+    frame.innerHTML = `<div class="video-placeholder"><div class="play">▶</div><p>Video đang được cập nhật</p></div>`;
+  }
+  const cap = document.createElement("div");
+  cap.className = "caption";
+  cap.innerHTML = `<h3>${v.title}</h3><p>${v.desc}</p>`;
+  card.append(frame, cap);
+  grid.appendChild(card);
+});
+
+/* ---------- Hiệu ứng chữ tách từng từ ---------- */
+const title = document.getElementById("heroTitle");
+const words = title.textContent.trim().split(" ");
+title.innerHTML = words.map((w, i) => `<span class="word" style="animation-delay:${0.3 + i * 0.18}s">${w}</span>`).join(" ");
+
+/* ---------- Header đổi nền khi cuộn ---------- */
+const header = document.getElementById("top");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 60);
+}, { passive: true });
+
+/* ---------- Menu mobile ---------- */
+const toggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+toggle.addEventListener("click", () => navLinks.classList.toggle("open"));
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navLinks.classList.remove("open")));
+
+/* ---------- Reveal khi cuộn tới ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("visible");
+      if (e.target.dataset.count) countUp(e.target);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll(".reveal, .gallery figure, [data-count]").forEach(el => io.observe(el));
+
+/* ---------- Đếm số ---------- */
+function countUp(el) {
+  const target = +el.dataset.count;
+  const duration = 1400;
+  const start = performance.now();
+  const step = now => {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))) + (target >= 100 ? "+" : "+");
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/* ---------- Lightbox ---------- */
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+document.querySelectorAll(".gallery img").forEach(img => {
+  img.addEventListener("click", () => {
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lb.classList.add("open");
+  });
+});
+const closeLb = () => lb.classList.remove("open");
+document.getElementById("lbClose").addEventListener("click", closeLb);
+lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+
+/* ---------- Năm bản quyền ---------- */
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
