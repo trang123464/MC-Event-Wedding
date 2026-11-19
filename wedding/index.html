@@ -160,7 +160,7 @@
     .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
     .service-card .icon { font-size: 1.8rem; margin-bottom: 14px; }
     .service-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
-    .service-card p { color: var(--muted); font-size: .95rem; }
+    .service-card p { color: var(--muted); font-size: .95rem; word-break: normal; overflow-wrap: normal; hyphens: none; }\n    .keep-together { white-space: nowrap; }
 
     /* ---------- Video ---------- */
     .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 40px; }
@@ -271,7 +271,7 @@
 <section class="hero" style="padding:0">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-content">
-    <p class="eyebrow" style="color:var(--gold-soft)">Wedding & Event MC</p>
+    <p class="eyebrow" style="color:var(--gold-soft)">Wedding Event MC</p>
     <h1 id="heroTitle">MC Xuân Trang</h1>
     <p class="tagline">Người kể chuyện tình yêu của bạn</p>
     <p class="langs">VIETNAMESE · JAPANESE · ENGLISH</p>
@@ -529,11 +529,11 @@
 const I18N = {
  vi:{
   nav:["Giới thiệu","Khoảnh khắc","Dịch vụ","Video dẫn","Cảm nhận"],
-  hero:["Wedding & Event MC","Người kể chuyện tình yêu của bạn","▶ Xem video dẫn"],
+  hero:["Wedding Event MC","Người kể chuyện tình yêu của bạn","▶ Xem video dẫn"],
   about:["Về Xuân Trang","Dẫn bằng cảm xúc,<br>kể bằng sự tinh tế","Xuân Trang luôn muốn trở thành người đồng hành cùng các cặp đôi trong khoảnh khắc hạnh phúc nhất đời.","Với phong cách dẫn cảm xúc, linh hoạt và hiểu văn hóa Nhật – Việt, hơn 6 năm gắn bó và hơn 400 lễ cưới – sự kiện, Trang rất vui khi được lắng nghe, thấu cảm và kể lại câu chuyện tình yêu theo cách riêng: tự nhiên, gần gũi nhưng vẫn đủ sâu đủ chạm.","Với Trang, MC cưới không chỉ là người dẫn dắt buổi lễ, mà là người kể chuyện, người kết nối cảm xúc, để những người thân yêu đều tận hưởng buổi lễ cưới."],
   stats:["Năm gắn bó","Lễ cưới & sự kiện","Ngôn ngữ dẫn"],
   gallery:["Khoảnh khắc","Những lễ cưới đã đi qua","Mỗi bộ ảnh là một câu chuyện riêng, một phong cách riêng.","Intimate Wedding HCM · Simon & Chika","Một lễ cưới tinh tế, nơi ba nền văn hoá Anh – Nhật – Trung hòa quyện nhẹ nhàng trong từng khoảnh khắc.","Tiệc cưới thân mật · Yuta & Thy","Bí mật tạo thử thách đặc biệt cho chú rể, kết thúc là chú rể dùng giọng hát để rước cô dâu. Một bữa tiệc đủ “ấm và yêu”.","Wedding Event Song ngữ Nhật – Việt · Duy & Natsuki","Intimate Wedding HCM với không khí ấm áp, trang trọng và rất nhiều nụ cười.","Lễ Gia Tiên + Party · Taishi x Thiện Huỳnh","Phần lễ trang trọng, phần party rộn ràng – trọn vẹn hai nền văn hoá.","Ballroom Wedding · Futa x Akari · Đà Nẵng","Không gian vỏn vẹn 25 khách, tuy nhiên rất ấm áp – cùng nhau chơi game, trọn vẹn buổi tiệc thân mật.","Lễ Gia Tiên & Tiệc cưới · Koto & Mỹ Ngọc · Long An","Tiệc diễn ra tại tư gia nhà gái, phần lễ rất trang trọng, phần game chơi hết mình.","Lễ Gia Tiên & Tiệc cưới · Thu & Yusuke · HCM","Giữa Sài Gòn nhộn nhịp, chỉ 6 bàn thân thương – đủ để mọi nụ cười, lời chúc và niềm hạnh phúc được lan tỏa trọn vẹn."],
-  services:["Dịch vụ","Một lễ cưới, nhiều phong cách","Mỗi cặp đôi là một câu chuyện riêng. Trang tùy biến kịch bản theo đúng mong muốn của bạn.","Tiệc cưới Du lịch & Vows","Lễ thề nguyện bên biển, đồi thông, sân vườn – không gian thân mật và đầy cảm xúc.","Tiệc cưới sang trọng","Dẫn nghi thức, kể chuyện cặp đôi, gameshow kết nối cùng khách mời tại khách sạn, nhà hàng.","Lễ Gia Tiên truyền thống","Kết nối hai gia đình, điều phối đúng trình tự, đúng phong tục và giờ hoàng đạo.","MC Song ngữ Việt – Nhật – Anh","Dẫn song ngữ tự nhiên, giúp khách trong và ngoài nước đều thấu hiểu trọn vẹn văn hoá hôn lễ.","Gameshow & After Party","Minigame văn minh, duyên dáng – biến khán phòng thành lễ hội đầy nụ cười.","Kịch bản cá nhân hóa","Lắng nghe câu chuyện, chắt lọc chất liệu và viết lời dẫn chạm đến cảm xúc của gia đình và bạn bè."],
+  services:["Dịch vụ","Một lễ cưới, nhiều phong cách","Mỗi cặp đôi là một câu chuyện riêng. Trang tùy biến kịch bản <span class=\"keep-together\">theo đúng mong muốn</span> của hai bạn.","Tiệc cưới Du lịch & Vows","Trao lời yêu thương giữa những miền cảm xúc","Từ lễ thề nguyện bên biển đến không gian riêng tư giữa thiên nhiên, mỗi khoảnh khắc đều được dẫn dắt tinh tế, để tình yêu được kể theo cách riêng của hai bạn.","Tiệc cưới Sang trọng","Thanh lịch trong từng khoảnh khắc","Dẫn dắt nghi thức, kết nối câu chuyện tình yêu và lan tỏa cảm xúc trong không gian tiệc cưới sang trọng, chỉn chu và đầy dấu ấn.","Lễ Gia Tiên Truyền thống","Trọn vẹn nghi lễ – Vẹn nguyên giá trị","Tinh tế kết nối hai gia đình, điều phối từng nghi thức theo phong tục, trình tự và giờ lành, gìn giữ nét đẹp truyền thống trong ngày trọng đại.","MC Song ngữ Việt – Nhật – Anh","Kết nối đa ngôn ngữ – Giao thoa văn hóa","Dẫn dắt tự nhiên bằng nhiều ngôn ngữ, giúp mỗi vị khách đều cảm nhận được sự gần gũi, thấu hiểu và trọn vẹn ý nghĩa của buổi lễ.","Gameshow & After Party","Gắn kết niềm vui – Thăng hoa cảm xúc","Những hoạt động tương tác duyên dáng, gameshow sáng tạo và không khí sôi động, biến mỗi buổi tiệc thành một hành trình đáng nhớ.","Kịch bản Cá nhân hóa","Câu chuyện riêng – Dấu ấn riêng","Lắng nghe câu chuyện của hai bạn, chắt lọc những chi tiết ý nghĩa và viết nên lời dẫn mang dấu ấn cá nhân, chạm đến cảm xúc của những người thân yêu."],
   videos:["Video dẫn","Nghe Trang dẫn trực tiếp","Video thực tế từ các lễ cưới, nghi thức, gameshow và tiệc thân mật. Bạn có thể phát trực tiếp ngay trên trang.","📁 Xem toàn bộ thư mục video"],
   reviews:["Cảm nhận","Lời tri ân từ cặp đôi","Cô thấy Trang dẫn rất tốt, từ đầu lúc làm việc với em tới giờ mọi thứ em làm rất chỉn chu. Cô rất thích giọng dẫn của em, truyền cảm, sâu sắc.","Feedback của mọi người là quá tuyệt vời bạn Trang ạ. May quá nhờ bạn Trang chạy trước chương trình để biết cách đi lại.","Vừa chuẩn giờ mong muốn nên rất tuyệt vời ạ. May là nay có em."],
   footer:"© {year} MC Xuân Trang · Wedding MC Việt – Nhật – Anh",
@@ -557,7 +557,7 @@ const I18N = {
  },
  en:{
   nav:["About","Wedding Moments","Services","Videos","Testimonials"],
-  hero:["Wedding & Event MC","Telling your love story with warmth","▶ Watch hosting videos"],
+  hero:["Wedding Event MC","Telling your love story with warmth","▶ Watch hosting videos"],
   about:["About Xuân Trang","Leading with feeling,<br>telling stories with grace","Xuân Trang hopes to accompany couples through one of the happiest moments of their lives.","With an expressive and adaptable hosting style, and an understanding of Vietnamese and Japanese cultures, Trang has over 6 years of experience and has hosted more than 400 weddings and events. She loves listening to each couple’s story and telling it in a way that feels personal, natural and heartfelt.","To Trang, a wedding MC does more than guide the ceremony. An MC connects people and emotions, helping everyone present feel part of the celebration."],
   stats:["Years of experience","Weddings & events","Hosting languages"],
   gallery:["Wedding moments","Celebrations we have shared","Every album holds a story and a style of its own.","Intimate Wedding HCM · Simon & Chika","An elegant celebration where British, Japanese and Chinese cultures came together naturally.","Intimate Wedding · Yuta & Thy","A surprise challenge for the groom, ending with a song to welcome the bride. A celebration full of warmth and love.","Vietnamese–Japanese Wedding · Duy & Natsuki","A warm and heartfelt celebration filled with meaningful moments and smiles.","Traditional Ceremony + Party · Taishi × Thiện Huỳnh","A heartfelt traditional ceremony followed by a lively party, bringing two cultures together.","Ballroom Wedding · Futa × Akari · Da Nang","Just 25 guests, sharing games and a warm, intimate celebration.","Traditional Ceremony & Reception · Koto & Mỹ Ngọc · Long An","Hosted at the bride’s family home, with a meaningful ceremony and lively games.","Traditional Ceremony & Reception · Thu & Yusuke · HCMC","In bustling Saigon, six intimate tables made room for every smile, blessing and happy moment."],
