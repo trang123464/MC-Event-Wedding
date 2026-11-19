@@ -480,10 +480,10 @@
     <div class="reveal">
       <span class="eyebrow">Video dẫn</span>
       <h2 class="section-title">Nghe Trang dẫn trực tiếp</h2>
-      <p class="lead" style="margin:0 auto">Những đoạn video dẫn thực tế để bạn cảm nhận giọng dẫn và phong cách.</p>
+      <p class="lead" style="margin:0 auto">Video thực tế từ các lễ cưới, nghi thức, gameshow và tiệc thân mật. Bạn có thể phát trực tiếp ngay trên trang.</p>
     </div>
 
-    <!-- Các video được điền trong mảng VIDEOS ở cuối file -->
+    <!-- Video Google Drive được nhúng trực tiếp từ các file đã cung cấp -->
     <div class="video-grid" id="videoGrid"></div>
 
     <div class="folder-link reveal">
@@ -552,12 +552,7 @@
    → ID là: ABC123xyz
    Để trống "id" thì ô sẽ hiện thông báo "đang cập nhật".
    ===================================================== */
-const VIDEOS = [
-  { title: "Video dẫn #1 – Lễ cưới song ngữ", desc: "Phong cách dẫn Việt – Nhật – Anh", id: "" },
-  { title: "Video dẫn #2 – Tiệc cưới sang trọng", desc: "Dẫn nghi thức & gameshow", id: "" },
-  { title: "Video dẫn #3 – Lễ Gia Tiên", desc: "Trang nghiêm, ấm áp", id: "" },
-  { title: "Video dẫn #4 – Vows & After Party", desc: "Không khí tiệc tối", id: "" }
-];
+const VIDEOS = [{"title":"Love Story","desc":"Câu chuyện tình yêu · Wedding film","id":"1TQD9do9ECpcTbqG7T03H3hEltVXuVS0h"},{"title":"Lễ Gia Tiên – Lễ Ăn Hỏi – Game K&N","desc":"Nghi thức truyền thống và khoảnh khắc tương tác","id":"1kC0Co4csEBneMWvJx6_ryG6dQ9Fk-WqO"},{"title":"Game cưới siêu vui · Wedding Thien × Taishi","desc":"Không khí vui tươi và kết nối hai gia đình","id":"1Xjce02nCKflIOATAqd2l-YGye8weP53S"},{"title":"Lời chào cho tiệc thân mật","desc":"Lời dẫn mở đầu tiệc thân mật","id":"143Er7T4nfkAZughUJj7zAqF295a8-SaA"},{"title":"Thử thách cô dâu dành cho chú rể","desc":"Gameshow tương tác trong tiệc cưới","id":"161w6mStKjfbDdd70xDdaBhW13LXsbLmU"},{"title":"After Party – Xuân ♥ Tsuyoshi’s Wedding","desc":"Khoảnh khắc tiệc tối và after party","id":"1SKATtlmSZNPhO3U1QwE1nGZegVRLmvUa"}];
 
 /* =====================================================
    2. CẤU HÌNH VIBER
