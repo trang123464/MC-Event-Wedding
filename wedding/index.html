@@ -78,7 +78,7 @@
     }
     .hero-bg {
       position: absolute; inset: -5%;
-      background: url("../images/hero-beach.jpg") center/cover no-repeat;
+      background: url("../images/wedding-hero-new.jpg") center/cover no-repeat;
       animation: kenburns 18s ease-in-out infinite alternate;
     }
     .hero::after {
@@ -129,6 +129,10 @@
     .event-head h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
     .event-head p { color: var(--muted); font-style: italic; max-width: 680px; margin: 0 auto; }
     .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    /* Album 5 ảnh: 2 ảnh lớn hàng đầu, 3 ảnh cân đối hàng dưới */
+    .gallery:has(figure:nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0,1fr)); }
+    .gallery:has(figure:nth-child(5):last-child) figure:nth-child(-n+2) { grid-column: span 3; }
+    .gallery:has(figure:nth-child(5):last-child) figure:nth-child(n+3) { grid-column: span 2; }
     .gallery figure {
       overflow: hidden; border-radius: 14px; aspect-ratio: 4/5;
       opacity: 0; transform: translateY(30px) scale(.98);
@@ -185,30 +189,9 @@
     .review-card p { font-style: italic; color: var(--ink); padding-top: 22px; margin-bottom: 14px; }
     .review-card span { font-size: .85rem; color: var(--gold); font-weight: 500; }
 
-    /* ---------- Contact ---------- */
-    .contact { text-align: center; background: var(--ink); color: var(--white); }
-    .contact .lead { color: #CFC6BC; margin: 0 auto 36px; }
-    .contact-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .contact .btn-ghost { color: var(--gold-soft); border-color: var(--gold-soft); }
-    .contact .btn-ghost:hover { background: var(--gold-soft); color: var(--ink); }
-    .contact .btn-primary { background: var(--gold-soft); color: var(--ink); border-color: var(--gold-soft); }
-    .contact .btn-primary:hover { background: var(--white); border-color: var(--white); }
-    .contact-note { color: #9E958C; font-size: .85rem; margin-top: 28px; }
-
     footer { padding: 28px 24px; text-align: center; font-size: .85rem; color: var(--muted); background: var(--cream); }
 
     /* ---------- Floating Viber ---------- */
-    .viber-float {
-      position: fixed; right: 22px; bottom: 22px; z-index: 60;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: #7360F2; color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 26px rgba(115,96,242,.45);
-      animation: pulse 2.6s infinite;
-      font-weight: 600; font-size: .75rem; text-align: center; line-height: 1.1;
-    }
-    .viber-float:hover { transform: scale(1.08); }
-
     /* ---------- Lightbox ---------- */
     .lightbox {
       position: fixed; inset: 0; background: rgba(15,10,6,.92);
@@ -236,6 +219,7 @@
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .service-grid, .review-grid { grid-template-columns: 1fr 1fr; }
       .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery:has(figure:nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0,1fr)); }
     }
     @media (max-width: 640px) {
       section { padding: 72px 18px; }
@@ -244,6 +228,8 @@
       .nav-links a { color: var(--ink) !important; }
       .menu-toggle { display: block; }
       .service-grid, .review-grid, .video-grid, .gallery, .gallery-wide { grid-template-columns: 1fr; }
+      .gallery:has(figure:nth-child(5):last-child) { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .gallery:has(figure:nth-child(5):last-child) figure { grid-column: span 1 !important; }
       .stats-grid { grid-template-columns: 1fr 1fr 1fr; }
       .hero .btn-row { flex-direction: column; align-items: stretch; }
     }
@@ -272,7 +258,6 @@
       <a href="#services">Dịch vụ</a>
       <a href="#videos">Video dẫn</a>
       <a href="#reviews">Cảm nhận</a>
-      <a href="#contact">Liên hệ</a>
     </div>
     <div class="lang-switch" role="group" aria-label="Choose language"><button type="button" data-lang="vi" class="active">VI</button><button type="button" data-lang="ja">日本語</button><button type="button" data-lang="en">EN</button></div>
     <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">☰</button>
@@ -289,7 +274,6 @@
     <p class="langs">VIETNAMESE · JAPANESE · ENGLISH</p>
     <div class="btn-row">
       <a href="#videos" class="btn btn-primary">▶ Xem video dẫn</a>
-      <a href="#contact" class="btn btn-ghost" style="color:var(--white);border-color:var(--white)">Đặt lịch tư vấn</a>
     </div>
   </div>
   <div class="scroll-hint" aria-hidden="true"></div>
@@ -299,7 +283,7 @@
 <section id="about">
   <div class="container about-grid">
     <div class="about-photo reveal">
-      <img src="../images/portrait-trang.jpg" alt="MC Xuân Trang trên lễ đường ngoài trời">
+      <img src="../images/wedding-portrait-new.jpg" alt="MC Xuân Trang trên lễ đường ngoài trời">
     </div>
     <div class="about-text reveal">
       <span class="eyebrow">Về Xuân Trang</span>
@@ -525,27 +509,11 @@
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section id="contact" class="contact">
-  <div class="container reveal">
-    <span class="eyebrow" style="color:var(--gold-soft)">Liên hệ</span>
-    <h2 class="section-title">Lễ đường đã sẵn sàng?</h2>
-    <p class="lead">Hãy kể cho Trang nghe câu chuyện của hai bạn. Trang luôn sẵn lòng lắng nghe và đồng hành.</p>
-    <div class="contact-row">
-      <a href="viber://chat?number=%2B84XXXXXXXXX" class="btn btn-primary">💬 Nhắn qua Viber</a>
-      <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="btn btn-ghost">Fanpage</a>
-      <a href="tel:+84XXXXXXXXX" class="btn btn-ghost">📞 Gọi điện</a>
-    </div>
-    <p class="contact-note">Thay các số XXXXXXXXX bằng số thật của bạn (xem README.md).</p>
-  </div>
-</section>
-
 <footer>
   © <span id="year"></span> MC Xuân Trang · Vietnamese – Japanese – English Wedding MC
 </footer>
 
 <!-- Nút Viber nổi -->
-<a href="viber://chat?number=%2B84XXXXXXXXX" class="viber-float" aria-label="Nhắn Viber cho MC Xuân Trang">Viber</a>
-
 <!-- Lightbox xem ảnh -->
 <div class="lightbox" id="lightbox">
   <button id="lbClose" aria-label="Đóng">×</button>
@@ -557,7 +525,7 @@
 /* ---------- Language switcher: Vietnamese default, Japanese, English ---------- */
 const I18N = {
  vi:{
-  nav:["Giới thiệu","Khoảnh khắc","Dịch vụ","Video dẫn","Cảm nhận","Liên hệ"],
+  nav:["Giới thiệu","Khoảnh khắc","Dịch vụ","Video dẫn","Cảm nhận"],
   hero:["Wedding & Event MC","Người kể chuyện tình yêu của bạn","▶ Xem video dẫn","Đặt lịch tư vấn"],
   about:["Về Xuân Trang","Dẫn bằng cảm xúc,<br>kể bằng sự tinh tế","Xuân Trang luôn muốn trở thành người đồng hành cùng các cặp đôi trong khoảnh khắc hạnh phúc nhất đời.","Với phong cách dẫn cảm xúc, linh hoạt và hiểu văn hóa Nhật – Việt, hơn 6 năm gắn bó và hơn 400 lễ cưới – sự kiện, Trang rất vui khi được lắng nghe, thấu cảm và kể lại câu chuyện tình yêu theo cách riêng: tự nhiên, gần gũi nhưng vẫn đủ sâu đủ chạm.","Với Trang, MC cưới không chỉ là người dẫn dắt buổi lễ, mà là người kể chuyện, người kết nối cảm xúc, để những người thân yêu đều tận hưởng buổi lễ cưới."],
   stats:["Năm gắn bó","Lễ cưới & sự kiện","Ngôn ngữ dẫn"],
@@ -565,14 +533,13 @@ const I18N = {
   services:["Dịch vụ","Một lễ cưới, nhiều phong cách","Mỗi cặp đôi là một câu chuyện riêng. Trang tùy biến kịch bản theo đúng mong muốn của bạn.","Tiệc cưới Du lịch & Vows","Lễ thề nguyện bên biển, đồi thông, sân vườn – không gian thân mật và đầy cảm xúc.","Tiệc cưới sang trọng","Dẫn nghi thức, kể chuyện cặp đôi, gameshow kết nối cùng khách mời tại khách sạn, nhà hàng.","Lễ Gia Tiên truyền thống","Kết nối hai gia đình, điều phối đúng trình tự, đúng phong tục và giờ hoàng đạo.","MC Song ngữ Việt – Nhật – Anh","Dẫn song ngữ tự nhiên, giúp khách trong và ngoài nước đều thấu hiểu trọn vẹn văn hoá hôn lễ.","Gameshow & After Party","Minigame văn minh, duyên dáng – biến khán phòng thành lễ hội đầy nụ cười.","Kịch bản cá nhân hóa","Lắng nghe câu chuyện, chắt lọc chất liệu và viết lời dẫn chạm đến cảm xúc của gia đình và bạn bè."],
   videos:["Video dẫn","Nghe Trang dẫn trực tiếp","Video thực tế từ các lễ cưới, nghi thức, gameshow và tiệc thân mật. Bạn có thể phát trực tiếp ngay trên trang.","📁 Xem toàn bộ thư mục video"],
   reviews:["Cảm nhận","Lời tri ân từ cặp đôi","Cô thấy Trang dẫn rất tốt, từ đầu lúc làm việc với em tới giờ mọi thứ em làm rất chỉn chu. Cô rất thích giọng dẫn của em, truyền cảm, sâu sắc.","Feedback của mọi người là quá tuyệt vời bạn Trang ạ. May quá nhờ bạn Trang chạy trước chương trình để biết cách đi lại.","Vừa chuẩn giờ mong muốn nên rất tuyệt vời ạ. May là nay có em."],
-  contact:["Liên hệ","Lễ đường đã sẵn sàng?","Hãy kể cho Trang nghe câu chuyện của hai bạn. Trang luôn sẵn lòng lắng nghe và đồng hành.","💬 Nhắn qua Viber","Fanpage","📞 Gọi điện"],
   footer:"© {year} MC Xuân Trang · Wedding MC Việt – Nhật – Anh",
   videosTitles:["Love Story","Lễ Gia Tiên – Lễ Ăn Hỏi – Game K&N","Game cưới siêu vui · Wedding Thien × Taishi","Lời chào cho tiệc thân mật","Thử thách cô dâu dành cho chú rể","After Party – Xuân ♥ Tsuyoshi’s Wedding"],
   videosDescs:["Câu chuyện tình yêu · Wedding film","Nghi thức truyền thống và khoảnh khắc tương tác","Không khí vui tươi và kết nối hai gia đình","Lời dẫn mở đầu tiệc thân mật","Gameshow tương tác trong tiệc cưới","Khoảnh khắc tiệc tối và after party"],
   play:"Video đang được cập nhật"
  },
  ja:{
-  nav:["プロフィール","ウェディングの思い出","サービス","動画","お客様の声","お問い合わせ"],
+  nav:["プロフィール","ウェディングの思い出","サービス","動画","お客様の声"],
   hero:["ウェディング・イベント司会","おふたりの愛の物語を伝えるMC","▶ 司会動画を見る","ご相談・お問い合わせ"],
   about:["Xuân Trangについて","心を込めて進行し、<br>繊細な言葉で物語を紡ぐ","人生で最も幸せな瞬間に寄り添い、おふたりと一緒にその一日をつくること。それがXuân Trangの願いです。","ベトナムと日本の文化への理解を大切にし、心に届く自然な司会を心がけています。6年以上の経験を重ね、これまでに400件以上の結婚式・イベントに携わってきました。おふたりの物語を丁寧に伺い、その人らしさが伝わる言葉でご紹介します。","司会者は単に進行するだけではありません。大切な人たちの気持ちをつなぎ、皆さまが心からその時間を楽しめるようにお手伝いします。"],
   stats:["経験年数","結婚式・イベント","対応言語"],
@@ -580,14 +547,13 @@ const I18N = {
   services:["サービス","おふたりらしい、さまざまなウェディング","おふたりのご希望に合わせて、進行や台本を丁寧にカスタマイズします。","リゾートウェディング・誓いのセレモニー","海辺や高原、ガーデンで行う、親密で感動的なセレモニー。","ホテル・レストランウェディング","式の進行、カップル紹介、ゲスト参加型ゲームまで心を込めて進行します。","伝統的な家族式","両家をつなぎ、伝統や順序を大切にしながらスムーズに進行します。","ベトナム語・日本語・英語MC","国内外のゲストに文化や式の内容が伝わる、自然な多言語司会。","ゲーム・アフターパーティー","上品で楽しいゲームを通じて、会場に笑顔と一体感を生み出します。","オーダーメイド台本","おふたりのお話を伺い、ご家族やご友人の心に届く言葉を紡ぎます。"],
   videos:["司会動画","Trangの司会を動画でご覧ください","結婚式、伝統儀式、ゲーム、アットホームなパーティーでの実際の司会映像です。ページ上で再生できます。","📁 動画フォルダをすべて見る"],
   reviews:["お客様の声","カップルからのメッセージ","最初のお打ち合わせから当日まで、とても丁寧に対応してくれました。声も心に響き、素晴らしい司会でした。","皆さんから「本当に素晴らしかった」と好評でした。事前に会場の動線まで確認してくれて、とても助かりました。","希望していた時間どおりに進行していただき、本当に良かったです。今日Trangさんがいてくれて助かりました。"],
-  contact:["お問い合わせ","おふたりの大切な一日を","おふたりのストーリーをぜひお聞かせください。心を込めてサポートいたします。","💬 Viberでメッセージ","Facebookページ","📞 電話する"],
   footer:"© {year} MC Xuân Trang · ベトナム語・日本語・英語 ウェディングMC",
   videosTitles:["Love Story","家族式・婚約式・ゲーム K&N","ウェディングゲーム · Thiện × Taishi","アットホームなパーティーのご挨拶","新婦から新郎へのチャレンジ","アフターパーティー · Xuân ♥ Tsuyoshi"],
   videosDescs:["おふたりの愛の物語 · Wedding Film","伝統儀式とゲスト参加のひととき","笑顔あふれる、ご家族をつなぐゲーム","アットホームなパーティーのオープニングMC","披露宴での参加型ゲーム","夜のパーティーとアフターパーティーの様子"],
   play:"動画を準備中です"
  },
  en:{
-  nav:["About","Wedding Moments","Services","Videos","Testimonials","Contact"],
+  nav:["About","Wedding Moments","Services","Videos","Testimonials"],
   hero:["Wedding & Event MC","Telling your love story with warmth","▶ Watch hosting videos","Book a consultation"],
   about:["About Xuân Trang","Leading with feeling,<br>telling stories with grace","Xuân Trang hopes to accompany couples through one of the happiest moments of their lives.","With an expressive and adaptable hosting style, and an understanding of Vietnamese and Japanese cultures, Trang has over 6 years of experience and has hosted more than 400 weddings and events. She loves listening to each couple’s story and telling it in a way that feels personal, natural and heartfelt.","To Trang, a wedding MC does more than guide the ceremony. An MC connects people and emotions, helping everyone present feel part of the celebration."],
   stats:["Years of experience","Weddings & events","Hosting languages"],
@@ -595,7 +561,6 @@ const I18N = {
   services:["Services","One wedding, many possibilities","Every couple has a unique story. Trang tailors the hosting script to your wishes.","Destination Wedding & Vows","Heartfelt vows by the sea, in the highlands or in a garden setting.","Elegant Wedding Reception","Ceremony hosting, your love story and guest activities at hotels and restaurants.","Traditional Vietnamese Ceremony","Bringing both families together while respecting traditions, timing and ceremony flow.","Vietnamese · Japanese · English MC","Natural multilingual hosting so local and international guests can share every moment.","Games & After Party","Thoughtful, engaging games that bring the room together with laughter.","Personalized Script","Listening to your story and shaping words that resonate with family and friends."],
   videos:["Hosting videos","Hear Trang host","Real moments from weddings, traditional ceremonies, games and intimate receptions. Play the videos right here on the page.","📁 View the full video folder"],
   reviews:["Testimonials","Kind words from couples","Trang hosted beautifully. From our first conversation to the wedding day, everything was thoughtful and well prepared. Her voice was warm and moving.","Everyone said it was wonderful. We were so glad Trang had walked through the venue and checked the flow with us beforehand.","Everything ran exactly on schedule as we had hoped. We were so glad to have you with us."],
-  contact:["Contact","Ready for your wedding day?","Tell Trang your story. She would be delighted to listen and help you create a meaningful celebration.","💬 Message on Viber","Facebook page","📞 Call"],
   footer:"© {year} MC Xuân Trang · Vietnamese – Japanese – English Wedding MC",
   videosTitles:["Love Story","Traditional Ceremony · Engagement · K&N Games","Fun Wedding Games · Thiện × Taishi","Welcome Speech for an Intimate Reception","Bride’s Challenge for the Groom","After Party – Xuân ♥ Tsuyoshi’s Wedding"],
   videosDescs:["A couple’s love story · Wedding film","Traditional rituals and interactive moments","Fun games bringing two families together","Opening words for an intimate celebration","Interactive wedding reception game","Evening celebration and after-party moments"],
@@ -617,8 +582,7 @@ function applyLanguage(lang){
  document.querySelectorAll(".service-card").forEach((el,i)=>{el.querySelector("h3").textContent=d.services[3+i*2];el.querySelector("p").textContent=d.services[4+i*2]});
  set("#videos .eyebrow",[d.videos[0]]);set("#videos h2",[d.videos[1]]);set("#videos .lead",[d.videos[2]]);set("#videos .folder-link a",[d.videos[3]]);
  set("#reviews .eyebrow",[d.reviews[0]]);set("#reviews h2",[d.reviews[1]]);set(".review-card p",d.reviews.slice(2));
- set("#contact .eyebrow",[d.contact[0]]);set("#contact h2",[d.contact[1]]);set("#contact .lead",[d.contact[2]]);set("#contact .contact-row a",d.contact.slice(3));
- document.querySelector("footer").textContent=d.footer.replace("{year}",new Date().getFullYear());
+  document.querySelector("footer").textContent=d.footer.replace("{year}",new Date().getFullYear());
  document.querySelectorAll("#videoGrid .video-card").forEach((card,i)=>{const v=card.querySelector(".caption");if(v){v.querySelector("h3").textContent=d.videosTitles[i];v.querySelector("p").textContent=d.videosDescs[i]}const frame=card.querySelector(".video-placeholder p");if(frame)frame.textContent=d.play});
  document.querySelectorAll(".lang-switch button").forEach(b=>{b.classList.toggle("active",b.dataset.lang===lang);b.setAttribute("aria-pressed",b.dataset.lang===lang?"true":"false")});
  document.title=lang==="ja"?"MC Xuân Trang | ベトナム語・日本語・英語 ウェディングMC":lang==="en"?"MC Xuân Trang | Vietnamese–Japanese–English Wedding MC":"MC Xuân Trang | MC cưới Việt – Nhật – Anh";
