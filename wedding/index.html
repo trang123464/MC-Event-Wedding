@@ -128,14 +128,12 @@
     .event-head { text-align: center; margin-bottom: 28px; }
     .event-head h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
     .event-head p { color: var(--muted); font-style: italic; max-width: 680px; margin: 0 auto; }
-    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-    .gallery:has(> figure:nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+    /* Album 5 ảnh: 2 ảnh cân đối ở hàng trên, 3 ảnh kín hàng dưới */
     .gallery:has(> figure:nth-child(5):last-child) figure:nth-child(-n+2) { grid-column: span 3; }
     .gallery:has(> figure:nth-child(5):last-child) figure:nth-child(n+3) { grid-column: span 2; }
-    /* Album 5 ảnh: 2 ảnh lớn hàng đầu, 3 ảnh cân đối hàng dưới */
-    .gallery:has(> figure:nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0,1fr)); }
-    .gallery:has(figure:nth-child(5):last-child) figure:nth-child(-n+2) { grid-column: span 3; }
-    .gallery:has(figure:nth-child(5):last-child) figure:nth-child(n+3) { grid-column: span 2; }
+    /* Ảnh lỗi hoặc khung ảnh chưa có nội dung không chiếm chỗ */
+    .gallery figure:has(img:not([src])), .gallery figure:has(img[src=""]) { display: none; }
     .gallery figure {
       overflow: hidden; border-radius: 14px; aspect-ratio: 4/5;
       opacity: 1; transform: none;
@@ -695,6 +693,8 @@ function countUp(el) {
 const lb = document.getElementById("lightbox");
 const lbImg = document.getElementById("lbImg");
 document.querySelectorAll(".gallery img").forEach(img => {
+  if (img.complete && img.naturalWidth === 0) img.closest("figure")?.remove();
+  img.addEventListener("error", () => img.closest("figure")?.remove(), { once: true });
   img.addEventListener("click", () => {
     lbImg.src = img.src;
     lbImg.alt = img.alt;
