@@ -129,6 +129,12 @@
     .event-head h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
     .event-head p { color: var(--muted); font-style: italic; max-width: 680px; margin: 0 auto; }
     .gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+    /* Featured albums: three large photos per row */
+    .gallery-featured { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .gallery-featured figure { aspect-ratio: 4/5; }
+    /* Secondary album: compact horizontal photo strip */
+    .gallery-compact { display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 10px; }
+    .gallery-compact figure { flex: 0 0 calc(20% - 8px); aspect-ratio: 4/3; border-radius: 10px; }
     /* Album 5 ảnh: 2 ảnh cân đối ở hàng trên, 3 ảnh kín hàng dưới */
     .gallery:has(> figure:nth-child(5):last-child) figure:nth-child(-n+2) { grid-column: span 3; }
     .gallery:has(> figure:nth-child(5):last-child) figure:nth-child(n+3) { grid-column: span 2; }
@@ -337,7 +343,7 @@
         <h3>Intimate Wedding HCM · Simon & Chika</h3>
         <p>Một lễ cưới tinh tế, nơi ba nền văn hoá Anh – Nhật – Trung hòa quyện nhẹ nhàng trong từng khoảnh khắc.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery gallery-featured">
         <figure><img src="../images/simon-chika-1.png" alt="Simon & Chika - Intimate Wedding HCM" loading="lazy"></figure>
         <figure><img src="../images/simon-chika-2.png" alt="Khoảnh khắc Simon & Chika" loading="lazy"></figure>
         <figure><img src="../images/simon-chika-3.png" alt="MC Xuân Trang trong lễ cưới Simon & Chika" loading="lazy"></figure>
@@ -362,7 +368,7 @@
 
     <div class="event-block">
       <div class="event-head reveal">
-        <h3>Wedding Event Song ngữ Nhật – Việt · Duy & Natsuki</h3>
+        <h3>Duy & Natsuki・ Hồ Chí Minh</h3>
         <p>Intimate Wedding HCM với không khí ấm áp, trang trọng và rất nhiều nụ cười.</p>
       </div>
       <div class="gallery">
@@ -401,7 +407,7 @@
         <h3>Lễ Gia Tiên & Tiệc cưới · Koto & Mỹ Ngọc · Long An</h3>
         <p>Tiệc diễn ra tại tư gia nhà gái, phần lễ rất trang trọng, phần game chơi hết mình.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery gallery-compact">
         <figure><img src="../images/koto-my-ngoc-1.jpg" alt="Koto & Mỹ Ngọc lễ gia tiên" loading="lazy"></figure>
         <figure><img src="../images/koto-my-ngoc-3.jpg" alt="Koto & Mỹ Ngọc trao quà" loading="lazy"></figure>
         <figure><img src="../images/koto-my-ngoc-4.jpg" alt="Koto & Mỹ Ngọc game" loading="lazy"></figure>
@@ -415,14 +421,13 @@
         <h3>Lễ Gia Tiên & Tiệc cưới · Thu & Yusuke · HCM</h3>
         <p>Giữa Sài Gòn nhộn nhịp, chỉ 6 bàn thân thương – đủ để mọi nụ cười, lời chúc và niềm hạnh phúc được lan tỏa trọn vẹn.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery gallery-featured">
         <figure><img src="../images/thu-yusuke-1.jpg" alt="Thu & Yusuke – MC dẫn dắt lễ cưới" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-2.jpg" alt="Thu & Yusuke – khoảnh khắc giao lưu cùng gia đình" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-3.jpg" alt="Thu & Yusuke – khoảnh khắc trên sân khấu" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-4.jpg" alt="Thu & Yusuke – hoạt động kết nối khách mời" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-5.jpg" alt="Thu & Yusuke – khoảnh khắc cùng cô dâu chú rể" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-6.jpg" alt="Thu & Yusuke – tiệc cưới" loading="lazy"></figure>
-        <figure><img src="../images/thu-yusuke-7.jpg" alt="Thu & Yusuke – lời chúc và niềm vui" loading="lazy"></figure>
       </div>
     </div>
   </div>
