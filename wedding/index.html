@@ -163,6 +163,7 @@
     .gallery-wide figure { aspect-ratio: 4/3; }
     /* Thu & Yusuke: carousel trượt ngang tự động, 3 ảnh hiển thị cùng lúc */
     #galleries .gallery-auto-carousel {
+      position: relative;
       display: flex !important;
       width: 100%;
       overflow-x: auto;
@@ -843,7 +844,7 @@ document.querySelectorAll("#galleries .gallery-auto-carousel").forEach(gallery =
     if (index === 0) {
       gallery.scrollTo({ left: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
     } else {
-      gallery.scrollTo({ left: slides[index].offsetLeft - gallery.offsetLeft, behavior: reducedMotion.matches ? "auto" : "smooth" });
+      gallery.scrollTo({ left: slides[index].offsetLeft, behavior: reducedMotion.matches ? "auto" : "smooth" });
     }
   };
   const stop = () => { if (timer) clearInterval(timer); timer = null; };
