@@ -840,12 +840,12 @@ document.querySelectorAll("#galleries .gallery-auto-carousel").forEach(gallery =
   let paused = false;
   const step = () => {
     if (document.hidden || gallery.matches(":hover") || gallery.matches(":focus-within")) return;
-    index = (index + 1) % slides.length;
-    if (index === 0) {
-      gallery.scrollTo({ left: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
-    } else {
-      gallery.scrollTo({ left: slides[index].offsetLeft, behavior: reducedMotion.matches ? "auto" : "smooth" });
-    }
+    const gap = parseFloat(getComputedStyle(gallery).gap) || 0;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const visibleCount = Math.max(1, Math.floor((gallery.clientWidth + gap) / (slideWidth + gap)));
+    const lastStart = Math.max(0, slides.length - visibleCount);
+    index = index >= lastStart ? 0 : index + 1;
+    gallery.scrollTo({ left: index === 0 ? 0 : slides[index].offsetLeft, behavior: reducedMotion.matches ? "auto" : "smooth" });
   };
   const stop = () => { if (timer) clearInterval(timer); timer = null; };
   const start = () => {
