@@ -220,6 +220,41 @@
     #galleries .gallery-party-two { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; width: 100%; }
     #galleries .gallery-party-two > figure { grid-column: auto !important; width: 100%; min-width: 0; aspect-ratio: 4/3; }
 
+    /* ---------- 3D Coverflow: Hiroyuki & Phương Thảo ---------- */
+    #galleries .coverflow-shell { width:100%; max-width:960px; margin:0 auto; }
+    #galleries .gallery-3d-coverflow {
+      position:relative; display:block !important; width:100%; height:440px;
+      overflow:hidden; perspective:1200px; transform-style:preserve-3d;
+      isolation:isolate; touch-action:pan-y;
+    }
+    #galleries .gallery-3d-coverflow > figure {
+      position:absolute; top:18px; left:50%; width:min(38%,360px); height:390px;
+      margin:0; aspect-ratio:auto; border-radius:16px;
+      transform-style:preserve-3d; transform-origin:center center;
+      transition:transform .85s cubic-bezier(.2,.75,.25,1), opacity .7s ease, filter .7s ease;
+      will-change:transform,opacity; cursor:pointer; box-shadow:0 18px 42px rgba(35,23,13,.2);
+      backface-visibility:hidden;
+    }
+    #galleries .gallery-3d-coverflow > figure img { width:100%; height:100%; object-fit:cover; }
+    #galleries .gallery-3d-coverflow > figure.is-active { cursor:zoom-in; }
+    .coverflow-controls { display:flex; justify-content:center; align-items:center; gap:18px; margin-top:8px; }
+    .coverflow-arrow,.coverflow-toggle {
+      border:1px solid #D9B878; background:rgba(255,255,255,.55); color:var(--gold);
+      border-radius:999px; cursor:pointer; font:500 .9rem "Be Vietnam Pro",sans-serif;
+      transition:background .25s,color .25s,transform .25s;
+    }
+    .coverflow-arrow { width:38px; height:38px; font-size:1.65rem; line-height:1; }
+    .coverflow-toggle { padding:8px 17px; font-size:.8rem; }
+    .coverflow-arrow:hover,.coverflow-toggle:hover { background:var(--gold); color:white; transform:translateY(-2px); }
+    @media(max-width:640px) {
+      #galleries .gallery-3d-coverflow { height:360px; perspective:900px; }
+      #galleries .gallery-3d-coverflow > figure { top:18px; width:66%; height:310px; }
+      .coverflow-controls { margin-top:4px; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #galleries .gallery-3d-coverflow > figure { transition:none; }
+    }
+
     /* ---------- Services ---------- */
     .services { background: var(--white); }
     .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
@@ -505,13 +540,20 @@
         <h3>Lễ Gia Tiên & Tiệc cưới · Hiroyuki & Phương Thảo · HCM</h3>
         <p>Một ngày vui đặc biệt khi hai nền văn hóa cùng hiện diện, và mỗi thành viên đều có cơ hội góp mặt trong những khoảnh khắc ý nghĩa của hai bạn.</p>
       </div>
-       <div class="gallery gallery-featured">
-        <figure><img src="../images/hiroyuki-phuong-thao-1.jpg" alt="Hiroyuki & Phương Thảo – lễ gia tiên" loading="lazy"></figure>
-        <figure><img src="../images/hiroyuki-phuong-thao-2.jpg" alt="Hiroyuki & Phương Thảo – nghi thức gia tiên" loading="lazy"></figure>
-        <figure><img src="../images/hiroyuki-phuong-thao-3.jpg" alt="Hiroyuki & Phương Thảo – khoảnh khắc cùng gia đình" loading="lazy"></figure>
-        <figure><img src="../images/hiroyuki-phuong-thao-4.jpg" alt="Hiroyuki & Phương Thảo – tiệc cưới" loading="lazy"></figure>
-        <figure><img src="../images/hiroyuki-phuong-thao-5.jpg" alt="Hiroyuki & Phương Thảo – ngày vui" loading="lazy"></figure>
-        <figure><img src="../images/hiroyuki-phuong-thao-6.jpg" alt="Hiroyuki & Phương Thảo – vui" loading="lazy"></figure>
+      <div class="coverflow-shell">
+        <div class="gallery gallery-3d-coverflow" id="hiroyuki-coverflow" aria-label="Album ảnh cưới Hiroyuki và Phương Thảo" aria-roledescription="carousel">
+          <figure><img src="../images/hiroyuki-phuong-thao-1.jpg" alt="Hiroyuki & Phương Thảo – lễ gia tiên" loading="lazy"></figure>
+          <figure><img src="../images/hiroyuki-phuong-thao-2.jpg" alt="Hiroyuki & Phương Thảo – nghi thức gia tiên" loading="lazy"></figure>
+          <figure><img src="../images/hiroyuki-phuong-thao-3.jpg" alt="Hiroyuki & Phương Thảo – khoảnh khắc cùng gia đình" loading="lazy"></figure>
+          <figure><img src="../images/hiroyuki-phuong-thao-4.jpg" alt="Hiroyuki & Phương Thảo – tiệc cưới" loading="lazy"></figure>
+          <figure><img src="../images/hiroyuki-phuong-thao-5.jpg" alt="Hiroyuki & Phương Thảo – ngày vui" loading="lazy"></figure>
+          <figure><img src="../images/hiroyuki-phuong-thao-6.jpg" alt="Hiroyuki & Phương Thảo – khoảnh khắc trong tiệc cưới" loading="lazy"></figure>
+        </div>
+        <div class="coverflow-controls" aria-label="Điều khiển album ảnh">
+          <button type="button" class="coverflow-arrow" data-coverflow-prev aria-label="Ảnh trước">‹</button>
+          <button type="button" class="coverflow-toggle" data-coverflow-toggle aria-pressed="true">Ⅱ Tạm dừng</button>
+          <button type="button" class="coverflow-arrow" data-coverflow-next aria-label="Ảnh tiếp theo">›</button>
+        </div>
       </div>
     </div>
     
@@ -866,6 +908,71 @@ document.querySelectorAll("#galleries .gallery-auto-carousel").forEach(gallery =
   reducedMotion.addEventListener?.("change", start);
   start();
 });
+
+/* ---------- 3D Coverflow: Hiroyuki & Phương Thảo ---------- */
+(() => {
+  const gallery = document.getElementById("hiroyuki-coverflow");
+  if (!gallery) return;
+  const cards = [...gallery.querySelectorAll(":scope > figure")];
+  if (cards.length < 2) return;
+  const shell = gallery.closest(".coverflow-shell");
+  const prev = shell.querySelector("[data-coverflow-prev]");
+  const next = shell.querySelector("[data-coverflow-next]");
+  const toggle = shell.querySelector("[data-coverflow-toggle]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let active = 0;
+  let timer = null;
+  let paused = reducedMotion.matches;
+  const render = () => {
+    const total = cards.length;
+    cards.forEach((card,i) => {
+      let offset = (i - active + total) % total;
+      if (offset > total / 2) offset -= total;
+      const distance = Math.abs(offset);
+      const mobile = window.matchMedia("(max-width:640px)").matches;
+      const x = offset * (mobile ? 57 : 63);
+      const z = -distance * (mobile ? 65 : 105);
+      const rotate = offset * (mobile ? -27 : -32);
+      const scale = Math.max(.68, 1 - distance * (mobile ? .13 : .12));
+      card.style.transform = `translate(-50%, 0) translateX(${x}%) translateZ(${z}px) rotateY(${rotate}deg) scale(${scale})`;
+      card.style.opacity = distance > 2 ? "0" : distance === 2 ? ".48" : "1";
+      card.style.filter = distance === 0 ? "none" : "brightness(.78)";
+      card.style.zIndex = String(10 - distance);
+      card.style.pointerEvents = distance > 2 ? "none" : "auto";
+      card.classList.toggle("is-active", distance === 0);
+      card.setAttribute("aria-hidden", distance > 2 ? "true" : "false");
+    });
+  };
+  const go = direction => { active = (active + direction + cards.length) % cards.length; render(); };
+  const stop = () => { if (timer) clearInterval(timer); timer = null; };
+  const start = () => {
+    stop();
+    if (!paused && !document.hidden && !reducedMotion.matches) timer = setInterval(() => go(1), 3000);
+  };
+  prev.addEventListener("click", () => { go(-1); start(); });
+  next.addEventListener("click", () => { go(1); start(); });
+  toggle.addEventListener("click", () => {
+    paused = !paused;
+    toggle.textContent = paused ? "▶ Tiếp tục" : "Ⅱ Tạm dừng";
+    toggle.setAttribute("aria-pressed", String(!paused));
+    start();
+  });
+  gallery.addEventListener("mouseenter", stop);
+  gallery.addEventListener("mouseleave", start);
+  gallery.addEventListener("touchstart", stop, {passive:true});
+  gallery.addEventListener("touchend", start, {passive:true});
+  document.addEventListener("visibilitychange", start);
+  window.addEventListener("resize", render);
+  reducedMotion.addEventListener?.("change", event => {
+    if (event.matches) { paused = true; toggle.textContent = "▶ Tiếp tục"; toggle.setAttribute("aria-pressed","false"); }
+    start();
+  });
+  cards.forEach((card,i) => card.addEventListener("click", () => {
+    if (i !== active) { active = i; render(); }
+  }));
+  render();
+  start();
+})();
 
 /* ---------- Năm bản quyền ---------- */
 document.getElementById("year").textContent = new Date().getFullYear();
