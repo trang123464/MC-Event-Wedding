@@ -132,6 +132,8 @@
     /* Featured albums: three large photos per row */
     .gallery.gallery-featured { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row; }
     .gallery-featured figure { aspect-ratio: 4/5; }
+    /* Album Thu & Yusuke có 7 ảnh: căn ảnh cuối ở giữa hàng cuối */
+    .gallery-featured:has(> figure:nth-child(7):last-child) figure:nth-child(7) { grid-column: 2; }
     /* Yuta & Thy: 3 ảnh hàng trên, 2 ảnh hàng dưới */
     .gallery-featured:has(> figure:nth-child(5):last-child) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
     .gallery-featured:has(> figure:nth-child(5):last-child) figure:nth-child(-n+3) { grid-column: span 2; }
@@ -433,6 +435,7 @@
         <figure><img src="../images/thu-yusuke-4.jpg" alt="Thu & Yusuke – hoạt động kết nối khách mời" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-5.jpg" alt="Thu & Yusuke – khoảnh khắc cùng cô dâu chú rể" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-6.jpg" alt="Thu & Yusuke – tiệc cưới" loading="lazy"></figure>
+        <figure><img src="../images/thu-yusuke-7.jpg" alt="Thu & Yusuke – khoảnh khắc trong lễ gia tiên và tiệc cưới" loading="lazy"></figure>
       </div>
     </div>
   </div>
