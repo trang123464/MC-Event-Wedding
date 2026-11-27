@@ -299,6 +299,46 @@
     @media(max-width:900px){.review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:640px){.review-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}.review-photo{height:250px}}
 
+    /* ---------- 3D Coverflow: lời tri ân ---------- */
+    .review-coverflow-shell { position:relative; width:100%; max-width:980px; margin:42px auto 0; }
+    #review-coverflow {
+      position:relative; display:block; width:100%; height:570px; overflow:hidden;
+      perspective:1400px; transform-style:preserve-3d; isolation:isolate;
+    }
+    #review-coverflow .review-card {
+      position:absolute; top:8px; left:50%; width:min(36%,350px); height:540px;
+      margin:0; padding:0; border-radius:18px; background:var(--white);
+      box-shadow:0 20px 48px rgba(43,36,32,.18); overflow:hidden;
+      transform-style:preserve-3d; backface-visibility:hidden;
+      transition:transform .85s cubic-bezier(.2,.75,.25,1),opacity .7s ease,filter .7s ease;
+      will-change:transform,opacity;
+    }
+    #review-coverflow .review-photo {
+      display:block; width:100%; height:auto; aspect-ratio:4/3;
+      object-fit:cover; object-position:center;
+    }
+    #review-coverflow .review-card::before { top:calc((100vw * .36 * .75) - 34px); }
+    #review-coverflow .review-copy { min-height:250px; padding:28px 24px 24px; }
+    #review-coverflow .review-copy p { font-size:.91rem; line-height:1.75; }
+    #review-coverflow .review-copy span { margin-top:12px; }
+    #review-coverflow .review-card.is-active { cursor:default; }
+    @media(max-width:900px) {
+      #review-coverflow { height:540px; }
+      #review-coverflow .review-card { width:46%; height:510px; }
+      #review-coverflow .review-copy { min-height:240px; padding:24px 20px; }
+    }
+    @media(max-width:640px) {
+      .review-coverflow-shell { margin-top:28px; }
+      #review-coverflow { height:530px; perspective:1000px; }
+      #review-coverflow .review-card { top:8px; width:72%; height:500px; }
+      #review-coverflow .review-photo { aspect-ratio:4/3; }
+      #review-coverflow .review-copy { min-height:245px; padding:22px 18px; }
+      #review-coverflow .review-copy p { font-size:.85rem; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      #review-coverflow .review-card { transition:none; }
+    }
+
     footer { padding: 28px 24px; text-align: center; font-size: .85rem; color: var(--muted); background: var(--cream); }
 
     /* ---------- Floating Viber ---------- */
@@ -635,49 +675,56 @@
       <h2 class="section-title">Những lời yêu thương</h2>
       <p class="review-subtitle"><em>dâu rể gửi lại.</em></p>
     </div>
-    <div class="review-grid">
-      <article class="review-card reveal">
+    <div class="review-coverflow-shell">
+      <div class="review-coverflow" id="review-coverflow" aria-label="Lời tri ân và phản hồi" aria-roledescription="carousel">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-1.jpg" alt="Đạt & Chihiro – lời nhắn từ gia đình cô dâu" loading="lazy">
         <div class="review-copy">
           <p>Nhà cô dâu cũng gửi lời cảm ơn em nhiều lắm.</p>
           <span>— Đạt & Chihiro</span>
         </div>
       </article>
-      <article class="review-card reveal">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-2.jpg" alt="Lời cảm ơn từ WEDDING PLANNER" loading="lazy">
         <div class="review-copy">
           <p>Cảm ơn chị Trang đã hỗ trợ dẫn dắt lễ Gia Tiên và lễ Vu Quy thật trang trọng và đáng nhớ.</p>
           <span>— WEDDING PLANNER</span>
         </div>
       </article>
-      <article class="review-card reveal">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-4.jpg" alt="Thư & Yusuke – lời nhắn sau tiệc cưới" loading="lazy">
         <div class="review-copy">
           <p>May là nay có em, vừa chuẩn giờ mong muốn nên rất tuyệt vời.</p>
           <span>— Thư & Yusuke</span>
         </div>
       </article>
-      <article class="review-card reveal">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-3.jpg" alt="Lời cảm ơn từ gia đình cô dâu" loading="lazy">
         <div class="review-copy">
           <p>Cảm ơn chị đã đồng hành và góp phần giúp cho ngày trọng đại của vợ chồng em diễn ra thật trọn vẹn. Dù quá trình tổ chức có những thứ chưa khớp với ý mẹ vì mẹ em hơi khó tính, nhưng chị vẫn giúp cho mọi thứ diễn ra thật chỉn chu và ý nghĩa.</p>
           <span>— Gia đình cô dâu</span>
         </div>
       </article>
-      <article class="review-card reveal">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-5.jpg" alt="Thiện & Taishi – lời nhận xét về MC Xuân Trang" loading="lazy">
         <div class="review-copy">
           <p>Chị thấy Trang dẫn rất tốt, từ đầu lúc làm việc với em tới giờ mọi thứ em làm rất chỉn chu. Chị rất thích giọng dẫn của em, truyền cảm, sâu sắc.</p>
           <span>— Thiện & Taishi</span>
         </div>
       </article>
-      <article class="review-card reveal">
+      <article class="review-card">
         <img class="review-photo" src="../images/review-6.jpg" alt="Duy & Chihiro – lời phản hồi sau lễ cưới" loading="lazy">
         <div class="review-copy">
           <p>Feedback của mọi người là quá tuyệt vời luôn. May nhờ T cho chạy chương trình trước để biết cách đi lại, chứ không bị bối rối nhiều thứ.</p>
           <span>— Duy & Chihiro</span>
         </div>
       </article>
+      </div>
+      <div class="coverflow-controls review-coverflow-controls" aria-label="Điều khiển lời tri ân">
+        <button type="button" class="coverflow-arrow" data-review-prev aria-label="Lời tri ân trước">‹</button>
+        <button type="button" class="coverflow-toggle" data-review-toggle aria-pressed="true">Ⅱ Tạm dừng</button>
+        <button type="button" class="coverflow-arrow" data-review-next aria-label="Lời tri ân tiếp theo">›</button>
+      </div>
     </div>
   </div>
 </section>
@@ -972,6 +1019,60 @@ document.querySelectorAll("#galleries .gallery-auto-carousel").forEach(gallery =
   }));
   render();
   start();
+})();
+
+/* ---------- 3D Coverflow: lời tri ân ---------- */
+(() => {
+  const gallery = document.getElementById("review-coverflow");
+  if (!gallery) return;
+  const cards = [...gallery.querySelectorAll(":scope > .review-card")];
+  if (cards.length < 2) return;
+  const shell = gallery.closest(".review-coverflow-shell");
+  const prev = shell.querySelector("[data-review-prev]");
+  const next = shell.querySelector("[data-review-next]");
+  const toggle = shell.querySelector("[data-review-toggle]");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let active = 0, timer = null, paused = reducedMotion.matches;
+  const render = () => {
+    const total = cards.length;
+    cards.forEach((card,i) => {
+      let offset = (i - active + total) % total;
+      if (offset > total / 2) offset -= total;
+      const distance = Math.abs(offset);
+      const mobile = window.matchMedia("(max-width:640px)").matches;
+      const x = offset * (mobile ? 62 : 68);
+      const z = -distance * (mobile ? 70 : 110);
+      const rotate = offset * (mobile ? -25 : -30);
+      const scale = Math.max(.68, 1 - distance * .11);
+      card.style.transform = `translate(-50%,0) translateX(${x}%) translateZ(${z}px) rotateY(${rotate}deg) scale(${scale})`;
+      card.style.opacity = distance > 2 ? "0" : distance === 2 ? ".35" : "1";
+      card.style.filter = distance === 0 ? "none" : "brightness(.76)";
+      card.style.zIndex = String(10-distance);
+      card.style.pointerEvents = distance > 2 ? "none" : "auto";
+      card.classList.toggle("is-active",distance===0);
+      card.setAttribute("aria-hidden",distance>2?"true":"false");
+    });
+  };
+  const go = direction => { active=(active+direction+cards.length)%cards.length; render(); };
+  const stop = () => { if(timer) clearInterval(timer); timer=null; };
+  const start = () => { stop(); if(!paused&&!document.hidden&&!reducedMotion.matches) timer=setInterval(()=>go(1),3800); };
+  prev.addEventListener("click",()=>{go(-1);start();});
+  next.addEventListener("click",()=>{go(1);start();});
+  toggle.addEventListener("click",()=>{
+    paused=!paused;
+    toggle.textContent=paused?"▶ Tiếp tục":"Ⅱ Tạm dừng";
+    toggle.setAttribute("aria-pressed",String(!paused));
+    start();
+  });
+  gallery.addEventListener("mouseenter",stop);
+  gallery.addEventListener("mouseleave",start);
+  gallery.addEventListener("touchstart",stop,{passive:true});
+  gallery.addEventListener("touchend",start,{passive:true});
+  document.addEventListener("visibilitychange",start);
+  window.addEventListener("resize",render);
+  reducedMotion.addEventListener?.("change",event=>{if(event.matches){paused=true;toggle.textContent="▶ Tiếp tục";toggle.setAttribute("aria-pressed","false");}start();});
+  cards.forEach((card,i)=>card.addEventListener("click",()=>{if(i!==active){active=i;render();}}));
+  render(); start();
 })();
 
 /* ---------- Năm bản quyền ---------- */
