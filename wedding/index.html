@@ -131,6 +131,8 @@
     .gallery { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
     /* Featured albums: three large photos per row */
     .gallery.gallery-featured { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row; }
+    .gallery.gallery-single { grid-template-columns: minmax(0, 680px); justify-content: center; }
+    .gallery-single figure { aspect-ratio: 3/2; }
     .gallery-featured figure { aspect-ratio: 4/5; }
     /* Album Thu & Yusuke có 7 ảnh: căn ảnh cuối ở giữa hàng cuối */
     .gallery-featured:has(> figure:nth-child(7):last-child) figure:nth-child(7) { grid-column: 2; }
@@ -436,6 +438,17 @@
         <figure><img src="../images/thu-yusuke-5.jpg" alt="Thu & Yusuke – khoảnh khắc cùng cô dâu chú rể" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-6.jpg" alt="Thu & Yusuke – tiệc cưới" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-7.jpg" alt="Thu & Yusuke – khoảnh khắc trong lễ gia tiên và tiệc cưới" loading="lazy"></figure>
+      </div>
+    </div>
+
+    <div class="event-block">
+      <div class="event-head reveal">
+        <h3>LỄ GIA TIÊN VÀ TIỆC CƯỚI TẠI TP.HCM</h3>
+        <h4>Hiroyuki & Phương Thảo</h4>
+        <p>Một ngày vui đặc biệt khi hai nền văn hóa cùng hiện diện, và mỗi thành viên đều có cơ hội góp mặt trong những khoảnh khắc ý nghĩa của hai bạn.</p>
+      </div>
+      <div class="gallery gallery-single">
+        <figure><img src="../images/IMG_3688.JPG" alt="Hiroyuki & Phương Thảo – lễ gia tiên và tiệc cưới tại TP.HCM" loading="lazy"></figure>
       </div>
     </div>
   </div>
