@@ -210,6 +210,24 @@
     @media (max-width: 640px) {
       #galleries .gallery-auto-carousel > figure { flex-basis: 78%; }
     }
+    /* Yuta & Thy: bố cục riêng cho điện thoại – ảnh mở đầu lớn, 4 ảnh còn lại dạng lưới */
+    @media (max-width: 640px) {
+      #galleries .gallery-yuta-thy {
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:10px;
+      }
+      #galleries .gallery-yuta-thy > figure {
+        grid-column:span 1 !important;
+        width:100%;
+        aspect-ratio:4/3;
+      }
+      #galleries .gallery-yuta-thy > figure:first-child {
+        grid-column:1 / -1 !important;
+        aspect-ratio:16/9;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       #galleries .gallery-auto-carousel { scroll-behavior: auto; }
     }
@@ -500,7 +518,7 @@
         <h3>Tiệc cưới thân mật · Yuta & Thy</h3>
         <p>Bí mật tạo thử thách đặc biệt cho chú rể, kết thúc là chú rể dùng giọng hát để rước cô dâu. Một bữa tiệc đủ “ấm và yêu”.</p>
       </div>
-      <div class="gallery gallery-featured">
+      <div class="gallery gallery-featured gallery-yuta-thy">
         <figure><img src="../images/yuta-thy-1.jpg" alt="Yuta & Thy - tiệc thân mật" loading="lazy"></figure>
         <figure><img src="../images/yuta-thy-2.jpg" alt="Yuta & Thy hát rước dâu" loading="lazy"></figure>
         <figure><img src="../images/yuta-thy-3.png" alt="Yuta & Thy tầng thượng" loading="lazy"></figure>
