@@ -443,7 +443,7 @@
     </div>
 
     <div class="event-block">
-      <div class="event-head reveal">
+      <div class="event-head reveal" id="event-hiroyuki-head">
         <h3>Lễ Gia Tiên & Tiệc cưới · Hiroyuki & Phương Thảo · HCM</h3>
         <p>Một ngày vui đặc biệt khi hai nền văn hóa cùng hiện diện, và mỗi thành viên đều có cơ hội góp mặt trong những khoảnh khắc ý nghĩa của hai bạn.</p>
       </div>
@@ -651,7 +651,9 @@ function applyLanguage(lang){
  const gh=document.querySelectorAll("#galleries .container > .reveal .eyebrow, #galleries .container > .reveal h2, #galleries .container > .reveal p");
  [d.gallery[0],d.gallery[1],d.gallery[2]].forEach((v,i)=>{if(gh[i])gh[i].innerHTML=v});
  const heads=document.querySelectorAll("#galleries .event-head");
- heads.forEach((el,i)=>{el.querySelector("h3").textContent=d.gallery[3+i*2]||"";el.querySelector("p").textContent=d.gallery[4+i*2]||""});
+ heads.forEach((el,i)=>{const title=d.gallery[3+i*2];const desc=d.gallery[4+i*2];if(title!==undefined)el.querySelector("h3").textContent=title;if(desc!==undefined)el.querySelector("p").textContent=desc;});
+ const hiroyukiHead=document.querySelector("#event-hiroyuki-head");
+ if(hiroyukiHead){hiroyukiHead.querySelector("h3").textContent=d.gallery[17]||"Lễ Gia Tiên & Tiệc cưới · Hiroyuki & Phương Thảo · HCM";hiroyukiHead.querySelector("p").textContent=d.gallery[18]||"Một ngày vui đặc biệt khi hai nền văn hóa cùng hiện diện, và mỗi thành viên đều có cơ hội góp mặt trong những khoảnh khắc ý nghĩa của hai bạn.";}
  set("#services .eyebrow",[d.services[0]]);set("#services h2",[d.services[1]]);set("#services .lead",[d.services[2]]);
  document.querySelectorAll(".service-card").forEach((el,i)=>{el.querySelector("h3").textContent=d.services[3+i*3];el.querySelector("h4").textContent=d.services[4+i*3];el.querySelector("p").textContent=d.services[5+i*3]});
  set("#videos .eyebrow",[d.videos[0]]);set("#videos h2",[d.videos[1]]);set("#videos .lead",[d.videos[2]]);set("#videos .folder-link a",[d.videos[3]]);
