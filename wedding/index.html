@@ -161,6 +161,57 @@
     .gallery figure:nth-child(1) { grid-row: span 1; }
     .gallery-wide { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .gallery-wide figure { aspect-ratio: 4/3; }
+    /* Thu & Yusuke: carousel trượt ngang tự động, 3 ảnh hiển thị cùng lúc */
+    #galleries .gallery-auto-carousel {
+      display: flex !important;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      gap: 14px;
+      padding: 2px 2px 10px;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    #galleries .gallery-auto-carousel::-webkit-scrollbar { display: none; }
+    #galleries .gallery-auto-carousel > figure {
+      flex: 0 0 calc((100% - 28px) / 3);
+      min-width: 0;
+      aspect-ratio: 4/5;
+      scroll-snap-align: start;
+    }
+    /* Game Party: ép đúng 2 cột bằng nhau, không phát sinh cột dư */
+    #galleries .gallery-party-two {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      grid-auto-flow: row;
+      grid-auto-columns: auto;
+      width: 100%;
+      max-width: none;
+    }
+    #galleries .gallery-party-two > figure {
+      grid-column: auto !important;
+      width: 100%;
+      min-width: 0;
+    }
+    .carousel-toggle {
+      display: block;
+      margin: 12px auto 0;
+      padding: 6px 13px;
+      border: 1px solid #D9B878;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--gold);
+      font: 500 .78rem "Be Vietnam Pro", sans-serif;
+      cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      #galleries .gallery-auto-carousel > figure { flex-basis: 78%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #galleries .gallery-auto-carousel { scroll-behavior: auto; }
+    }
     /* Game Party chỉ có 2 ảnh: chia đều 2 cột, không để trống cột thứ ba */
     .gallery-wide:has(> figure:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .gallery-wide:has(> figure:nth-child(2):last-child) figure { aspect-ratio: 4/3; }
@@ -434,11 +485,11 @@
     </div>
 
     <div class="event-block">
-      <div class="gallery gallery-auto-carousel">
+      <div class="event-head reveal">
         <h3>Lễ Gia Tiên & Tiệc cưới · Thu & Yusuke · HCM</h3>
         <p>Giữa Sài Gòn nhộn nhịp, chỉ 6 bàn thân thương – đủ để mọi nụ cười, lời chúc và niềm hạnh phúc được lan tỏa trọn vẹn.</p>
       </div>
-      <div class="gallery gallery-featured">
+      <div class="gallery gallery-auto-carousel" aria-label="Album ảnh Thu & Yusuke">
         <figure><img src="../images/thu-yusuke-1.jpg" alt="Thu & Yusuke – MC dẫn dắt lễ cưới" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-3.jpg" alt="Thu & Yusuke – khoảnh khắc trên sân khấu" loading="lazy"></figure>
         <figure><img src="../images/thu-yusuke-5.jpg" alt="Thu & Yusuke – khoảnh khắc cùng cô dâu chú rể" loading="lazy"></figure>
@@ -769,6 +820,51 @@ const closeLb = () => lb.classList.remove("open");
 document.getElementById("lbClose").addEventListener("click", closeLb);
 lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+
+/* ---------- Auto carousel: Thu & Yusuke ---------- */
+document.querySelectorAll("#galleries .gallery-auto-carousel").forEach(gallery => {
+  const slides = [...gallery.querySelectorAll(":scope > figure")];
+  if (slides.length < 2) return;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const eventBlock = gallery.closest(".event-block");
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "carousel-toggle";
+  toggle.textContent = "Ⅱ Tạm dừng ảnh";
+  toggle.setAttribute("aria-pressed", "true");
+  if (eventBlock) eventBlock.querySelector(".event-head")?.appendChild(toggle);
+
+  let index = 0;
+  let timer = null;
+  let paused = false;
+  const step = () => {
+    if (document.hidden || gallery.matches(":hover") || gallery.matches(":focus-within")) return;
+    index = (index + 1) % slides.length;
+    if (index === 0) {
+      gallery.scrollTo({ left: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    } else {
+      gallery.scrollTo({ left: slides[index].offsetLeft - gallery.offsetLeft, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    }
+  };
+  const stop = () => { if (timer) clearInterval(timer); timer = null; };
+  const start = () => {
+    stop();
+    if (!paused && !reducedMotion.matches) timer = setInterval(step, 3000);
+  };
+  toggle.addEventListener("click", () => {
+    paused = !paused;
+    toggle.textContent = paused ? "▶ Tiếp tục ảnh" : "Ⅱ Tạm dừng ảnh";
+    toggle.setAttribute("aria-pressed", String(!paused));
+    if (paused) stop(); else start();
+  });
+  gallery.addEventListener("mouseenter", stop);
+  gallery.addEventListener("mouseleave", start);
+  gallery.addEventListener("focusin", stop);
+  gallery.addEventListener("focusout", start);
+  document.addEventListener("visibilitychange", start);
+  reducedMotion.addEventListener?.("change", start);
+  start();
+});
 
 /* ---------- Năm bản quyền ---------- */
 document.getElementById("year").textContent = new Date().getFullYear();
