@@ -324,7 +324,7 @@
     #review-coverflow .review-card.is-active { cursor:default; }
     @media(max-width:900px) {
       #review-coverflow { height:540px; }
-      #review-coverflow .review-card { width:46%; height:510px; }
+      #review-coverflow .review-card { width:min(42%,350px); height:510px; }
       #review-coverflow .review-copy { min-height:240px; padding:24px 20px; }
     }
     @media(max-width:640px) {
@@ -339,7 +339,7 @@
       #review-coverflow .review-card { transition:none; }
     }
 
-    footer { padding: 28px 24px; text-align: center; font-size: .85rem; color: var(--muted); background: var(--cream); }
+    #review-coverflow .review-card::before { display:none; }\n\n    footer { padding: 28px 24px; text-align: center; font-size: .85rem; color: var(--muted); background: var(--cream); }
 
     /* ---------- Floating Viber ---------- */
     /* ---------- Lightbox ---------- */
