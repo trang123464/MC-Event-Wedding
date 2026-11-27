@@ -210,6 +210,26 @@
     @media (max-width: 640px) {
       #galleries .gallery-auto-carousel > figure { flex-basis: 78%; }
     }
+    /* Duy & Natsuki, Koto & Mỹ Ngọc: tối ưu 5 ảnh trên điện thoại */
+    @media (max-width: 640px) {
+      #galleries .gallery-mobile-feature {
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        grid-auto-flow:row;
+        gap:10px;
+      }
+      #galleries .gallery-mobile-feature > figure {
+        grid-column:span 1 !important;
+        width:100%;
+        min-width:0;
+        aspect-ratio:4/3;
+      }
+      #galleries .gallery-mobile-feature > figure:first-child {
+        grid-column:1 / -1 !important;
+        aspect-ratio:16/9;
+      }
+    }
+
     /* Yuta & Thy: bố cục riêng cho điện thoại – ảnh mở đầu lớn, 4 ảnh còn lại dạng lưới */
     @media (max-width: 640px) {
       #galleries .gallery-yuta-thy {
@@ -554,7 +574,7 @@
         <h3>Duy & Natsuki・ Hồ Chí Minh</h3>
         <p>Intimate Wedding HCM với không khí ấm áp, trang trọng và rất nhiều nụ cười.</p>
       </div>
-      <div class="gallery">
+      <div class="gallery gallery-mobile-feature">
         <figure><img src="../images/duy-natsuki-1.png" alt="Duy & Natsuki" loading="lazy"></figure>
         <figure><img src="../images/duy-natsuki-2.png" alt="Duy & Natsuki dẫn chương trình" loading="lazy"></figure>
         <figure><img src="../images/duy-natsuki-3.png" alt="Duy & Natsuki cùng gia đình" loading="lazy"></figure>
@@ -591,7 +611,7 @@
         <h3>Lễ Gia Tiên & Tiệc cưới · Koto & Mỹ Ngọc · Long An</h3>
         <p>Tiệc diễn ra tại tư gia nhà gái, phần lễ rất trang trọng, phần game chơi hết mình.</p>
       </div>
-      <div class="gallery gallery-featured">
+      <div class="gallery gallery-featured gallery-mobile-feature">
         <figure><img src="../images/koto-my-ngoc-1.jpg" alt="Koto & Mỹ Ngọc lễ gia tiên" loading="lazy"></figure>
         <figure><img src="../images/koto-my-ngoc-3.jpg" alt="Koto & Mỹ Ngọc trao quà" loading="lazy"></figure>
         <figure><img src="../images/koto-my-ngoc-4.jpg" alt="Koto & Mỹ Ngọc game" loading="lazy"></figure>
